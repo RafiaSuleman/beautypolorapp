@@ -74,10 +74,10 @@ h1,h2,h3,h4,h5,h6{
 @apply text-[64px] leading-none xl:text-[72px] xl:leading-[76px];
 }
 .h2 {
-@apply text-[48px] leading-[54];
+@apply text-[48px] leading-[54px];
 }
 .h3 {
-@apply text-[36px] leading-[48];
+@apply text-[36px] leading-[48px];
 }
 .h3 {
 @apply text-xl ;
@@ -98,7 +98,7 @@ h1,h2,h3,h4,h5,h6{
     }
 
     .textarea{
-      @apply h-[120px] rounded-[20px] px-6 pt-4 resize-none;
+      @apply h-[120px] rounded-[20px]  px-6 pt-4 resize-none;
     }
 
     .input , .textarea {

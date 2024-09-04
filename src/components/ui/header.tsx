@@ -7,43 +7,65 @@ import Image from 'next/image'
 import {AiOutlineMenu} from 'react-icons/ai'
 import Mobilenav from './mobilenav'
 import Nav from './nav'
-
+import Socials from './socials'
+import { FaPhoneAlt } from 'react-icons/fa'
+import { IoMdMail } from 'react-icons/io'
 
 const Header = () => {
 
   const {mouseEnterHandler,mouseLeaveHandler}:any= useContext(CursorContext)
-  const [mobileNav,setMobileNav] = useState(true)
-  console.log('setMobileNav header:', setMobileNav); 
+  const [mobileNav,setMobileNav] = useState (true)
   
   return (
     <motion.header
       onMouseEnter={mouseEnterHandler}
       onMouseLeave={mouseLeaveHandler}
       className='pb-6 xl:pb:[50px] fixed z-40 w-full bg-accent-100 bx:bg-transparent'>
-        <div className='bg-secondary-100 mb-6 xl:mb-[50px] xl:h-[50px] py-4 xl:py-0'>
-          topbar
+
+        {/* topbar */}
+      <div className='bg-secondary-100 mb-6 xl:mb-[50px] xl:h-[50px] py-4 xl:py-0'>
+         <div className='container mx-auto h-full'>
+                <div className='flex items-center justify-between h-full'>
+                    <motion.div onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler} className='flex flex-col lg:flex-row items-center h-full gap-2 xl:gap-6 w-full justify-between xl:w-auto xl:justify-normal'>
+                        {/* phn and email */}
+                        <div className='flex items-center text-white gap-2'>
+                            <FaPhoneAlt/>
+                            <span>+92 323 333 667 9</span>
+                        </div>
+                        <div className='flex items-center text-white gap-2'>
+                            <IoMdMail/>
+                            <span>abc@mail.com</span>
+                        </div>
+                    </motion.div>
+                    <motion.div onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler} className='hidden xl:block'>
+                      <Socials containerStyles="flex gap-6 text-white"/>
+                    </motion.div>
+                </div>
+          </div>
         </div>
         <div className='container mx-auto flex items-center justify-between px-6 '>
-            <div>
+            <motion.div onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}>
               <Link href="/">
                   <Image src="/asserts/logo.svg" alt='' height="22"
                   width="120"/>            
               </Link>
-            </div>
+            </motion.div>
             {/* mobile nav  trigger*/}
             <div className='xl:hidden cursor-pointer' onClick={() => {setMobileNav(!mobileNav)}}>
               <AiOutlineMenu className='text-3xl text-primary'/>
             </div>
             {/* mobile nav  */}
             <motion.div 
+            initial={{right: "-100%"}}
+            animate={{right:mobileNav ? 0 : "-100%"}}
             className='fixed bg-primary top-0 bottom-0 right-0 w-[300px] xl:hidden z-50 '>
-              <Mobilenav setMobileNav = {setMobileNav}/>
+              <Mobilenav setMobileNav={setMobileNav}/>
             </motion.div>
 
             {/* desktop Nav */}
-            <div className='hidden xl:block'>
+            <motion.div onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler} className='hidden xl:block'>
               <Nav />
-            </div>
+            </motion.div>
         </div>
       
     </motion.header>
