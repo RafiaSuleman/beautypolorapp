@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useContext } from "react";
 
-const page = () => {
+const Home = () => {
   
-  const {mouseEnterHandler,mouseLeaveHandler}:any = useContext(CursorContext)
+  const {mouseEnterHandler, mouseLeaveHandler}:any = useContext(CursorContext)
   return (
     <motion.section
     initial={{ opacity: 0 }}
@@ -67,4 +67,4 @@ const page = () => {
   </motion.section>
   );
 }
-export default page
+export default Home
